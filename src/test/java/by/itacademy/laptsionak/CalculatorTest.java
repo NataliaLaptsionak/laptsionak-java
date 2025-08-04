@@ -1,14 +1,6 @@
 package by.itacademy.laptsionak;
 
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.MethodOrderer;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -16,7 +8,8 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.stream.Stream;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @DisplayName("Тестирование класса Калькулятор")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
@@ -35,7 +28,6 @@ public class CalculatorTest {
         calculator = new Calculator();
         System.out.println("-> @BeforeEach: подготовка к новому тесту.");
     }
-
 
     @AfterEach
     @DisplayName("Очистка ресурсов после каждого теста")
@@ -59,7 +51,7 @@ public class CalculatorTest {
             "-5, -10, -15",
             "100, 200, 300"
     })
-    void sum_shouldReturnCorrectResult(int a, int b, int expectedResult) {
+    void TestSum(int a, int b, int expectedResult) {
         assertEquals(expectedResult, calculator.sum(a, b));
     }
 
@@ -73,7 +65,7 @@ public class CalculatorTest {
             "-5, -5, 0",
             "10, -5, 15"
     })
-    void subtract_shouldReturnCorrectResult(int a, int b, int expectedResult) {
+    void TestSubtract(int a, int b, int expectedResult) {
         assertEquals(expectedResult, calculator.subtract(a, b));
     }
 
@@ -86,7 +78,7 @@ public class CalculatorTest {
             "0, 100, 0",
             "-5, -5, 25"
     })
-    void multiply_shouldReturnCorrectResult(int a, int b, int expectedResult) {
+    void TestMultiply(int a, int b, int expectedResult) {
         assertEquals(expectedResult, calculator.multiply(a, b));
     }
 
@@ -99,14 +91,14 @@ public class CalculatorTest {
             "-9, 3, -3.0",
             "0, 5, 0.0"
     })
-    void divide_shouldReturnCorrectResult(double a, double b, double expectedResult) {
+    void TestDivide(double a, double b, double expectedResult) {
         assertEquals(expectedResult, calculator.divide(a, b));
     }
 
     @Test
     @Order(5)
     @DisplayName("5. Проверка деления на ноль")
-    void divide_byZero_shouldThrowArithmeticException() {
+    void TestDivideByZero() {
         ArithmeticException exception = assertThrows(ArithmeticException.class, () -> {
             calculator.divide(1, 0);
         });
@@ -117,7 +109,7 @@ public class CalculatorTest {
     @DisplayName("6. Проверка переполнения при арифметических операциях")
     @ParameterizedTest(name = "{index}: {0}")
     @MethodSource("overflowArguments")
-    void operation_shouldThrowArithmeticExceptionOnOverflow(String testName, Runnable operation) {
+    void TestOverflow(String testName, Runnable operation) {
         assertThrows(ArithmeticException.class, operation::run);
     }
 
