@@ -14,7 +14,6 @@ public class HomePage {
     private String PERSONAL_LINK = "//header//a[@data-name='auth']";
 
     public HomePage() {
-        // Конструктор теперь пустой
     }
 
     public HomePage openSite() {

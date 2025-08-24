@@ -11,8 +11,6 @@ public class CabinetTest extends BaseTest {
 
     @BeforeEach
     public void setupTest() {
-        // Создаем объект HomePage и вызываем его методы по цепочке.
-        // Все конструкторы теперь вызываются без параметров.
         new HomePage()
                 .openSite()
                 .clickCloseModal()

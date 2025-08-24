@@ -15,14 +15,12 @@ public class CabinetPage {
     private final String USER_CREDENTIALS_POPUP_ERROR_XPATH = "//div[@class='alert alert-danger']/p[text()='Неверный логин или пароль']";
 
     public CabinetPage() {
-        // Конструктор теперь пустой
     }
 
     public String getHeadFormTitleText() {
         return WebDriver.getTextFromElement(HEAD_FORM_TITLE);
     }
 
-    // Для полей с локатором By.name пока оставим стандартный вызов
     public void sendKeysLogin(String login) {
         WebDriver.getDriver().findElement(By.name(USER_LOGIN_INPUT_NAME)).sendKeys(login);
     }
@@ -35,7 +33,6 @@ public class CabinetPage {
         WebDriver.getDriver().findElement(By.name(BUTTON_LOGIN_NAME)).click();
     }
 
-    // Методы для ошибок уже используют XPath, поэтому для них есть обертки
     public String getUserLoginPopupErrorText() {
         return WebDriver.getTextFromElement(USER_LOGIN_POPUP_ERROR_XPATH);
     }
