@@ -31,7 +31,7 @@ public class SearchTest extends BaseTest {
     }
 
     @Test
-    @DisplayName("Проверка, что все результаты содержат искомое слово (мотоцикл)")
+    @DisplayName("Проверка нахождения записей и содержащих слово (мотоцикл)")
     public void test2() {
 
         String searchTerm = "мотоцикл";
@@ -42,7 +42,7 @@ public class SearchTest extends BaseTest {
         Assertions.assertFalse(results.isEmpty(), "Поиск не должен возвращать пустой результат");
 
         System.out.println("--- НАЙДЕНЫ СЛЕДУЮЩИИЕ ТОВАРЫ: ---");
-        results.forEach(System.out::println); // Короткая запись для вывода каждого элемента списка
+        results.forEach(System.out::println);
         System.out.println("---------------------------------");
     }
 
