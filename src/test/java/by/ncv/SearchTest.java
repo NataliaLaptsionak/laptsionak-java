@@ -50,7 +50,7 @@ public class SearchTest extends BaseTest {
     @DisplayName("Проверка сообщения 'ничего не найдено' для несуществующего товара")
     public void test3() {
         SearchPage searchPage = new SearchPage();
-        searchPage.sendKeysSearch("cucumber");
+        searchPage.sendKeysSearch("кеноававв");
         searchPage.startSearch();
 
         Assertions.assertEquals(" \nСожалеем, но ничего не найдено.", searchPage.getNoResultsMsg());
